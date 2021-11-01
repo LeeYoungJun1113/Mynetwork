@@ -1,0 +1,26 @@
+import torch
+import torch.nn as nn # neural network 모음. (e.g. nn.Linear, nn.Conv2d, BatchNorm, Loss functions 등등)
+from torch.nn import functional as F # 파라미터가 필요없는 Function 모음
+from torchsummary import summary # summary를 통한 model의 현황을 확인 하기 위함
+# nn 함수를 호출, F 함수의 연산
+
+class CNNCAM(nn.Module): 
+    # torch.nn => nn, Base class for all neural network modules. Your models should also subclass this class.
+    # pytorch에서 각자 레이어 혹은 모델을 구성할 때, nn.Module을 상속받는다
+    # CNNCAM 은 nn.Module을 상속받는다.
+    def __init__(self): 
+        # 객체 self 를 생성한다.
+        # initialization 
+        #  __init__()은 반드시 첫 번째 인수로 self를 지정해야한다. self에는 인스턴스 자체가 전달되어 있다. 
+        # 이로 인해, 최과 메소드 내에 인스턴스 변수를 작성하거나, 참고하는 것이 가능해진다. 
+        # 클래스를 생성할 때에 지정한 인수는 초기화 메소드의 2 번째부터 작성해 나가면 된다.
+        # 컨스트럭터라고 불리는 초기화를 위한 함수(메소드)
+        # 인스턴스화를 실시할 때 반드시 처음에 호출되는 특수한 함수
+        # 오브젝트 생성(인스턴스를 생성)과 관련하여 데이터의 초기를 실시하는 함수
+        
+        super(CNNCAM, self).__init__() 
+        # super(ClassName, self).__init__(), 부모클래스
+        # super()로 기반 클래스(부모 클래스)를 초기화해줌으로써, 기반 클래스의 속성을 subclass가 받아오도록 한다. 
+        # (초기화를 하지 않으면, 부모 클래스의 속성을 사용할 수 없음)
+        # super(파생클래스, self).__init__() 을 해준다.이와 같이 적어주면 기능적으로 차이는 없지만, 
+        # 파생클래스와 self를 넣어서 현재 클래스가 어떤 클래스인지 명확하게 표시해줄 수 있다.
